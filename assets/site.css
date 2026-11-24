@@ -375,6 +375,17 @@ a.svc-row:hover .go,a.svc-row.is-hot .go{background:var(--blue);color:#fff;box-s
 @media (hover:hover){.mid .two .body p:hover,.panel p:not(:last-child):hover{color:#fff}}.mid .two .body p.is-hot,.panel p:not(:last-child).is-hot{color:#fff}
 }
 @media (prefers-reduced-motion:no-preference) and (max-width:760px){.facts>div::after{inset:0 -10px -8px}.step::before{inset:-12px -10px}.two .body p::before{inset:-10px -10px}.mid .two .body p::before,.panel p:not(:last-child)::before{inset:-22px -20px}}
+/* touch: the lift follows your scroll, so it eases in and out slowly and rises less than it does under a mouse */
+@media (hover:none) and (prefers-reduced-motion:no-preference){
+:root{--lift-mid:inset 0 1px 0 rgba(255,255,255,.9),0 0 0 1px rgba(10,15,46,.05),0 2px 4px rgba(10,15,46,.05),0 16px 30px -14px rgba(10,15,46,.14),0 30px 56px -30px rgba(46,107,255,.28)}
+.list>div,.svc-row,.fit-item{transition:transform .9s cubic-bezier(.22,.7,.28,1),box-shadow .9s ease,background .7s ease}
+.list>div::before,.svc-row::before{transition:width .9s cubic-bezier(.22,.7,.28,1)}
+.faq-group details::before,.reach>div::before,.facts>div::after,.step::before,.two .body p::before,.panel p:not(:last-child)::before{transition:opacity .7s ease,transform .9s cubic-bezier(.22,.7,.28,1)}
+.facts>div>*,.step>*,.reach>div>*,.faq-group summary,details p,.list p,.svc-row p,.fit-item span,.two .body p,.panel p{transition:color .7s ease,transform .9s cubic-bezier(.22,.7,.28,1)}
+.list>div.is-hot,a.svc-row.is-hot{transform:translateY(-4px);box-shadow:var(--lift-mid)}
+.list>div:first-child.is-hot{transform:translateY(-4px);box-shadow:inset 0 1px 0 rgba(255,255,255,.22),0 24px 44px -16px rgba(46,107,255,.65)}
+.list>div.is-hot::before,a.svc-row.is-hot::before{width:72px}
+}
 
 /* scroll reveal, used sparingly */
 .js [data-in]{opacity:0;transform:translateY(22px);transition:opacity .6s,transform .6s cubic-bezier(.2,.8,.2,1)}.js [data-in].is-in{opacity:1;transform:none}
