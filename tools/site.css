@@ -393,6 +393,9 @@ a.svc-row:hover .go,a.svc-row.is-hot .go{background:var(--blue);color:#fff;box-s
 /* paragraphs on light sections: the words lift on their own, with no surface behind them (Josh, 23 Nov 2026). Dark sections keep their soft light */
 .band:not(.mid) .two .body p::before{display:none}
 @media (prefers-reduced-motion:no-preference){@media (hover:hover){.band:not(.mid) .two .body p:hover{transform:translateY(-4px)}}.band:not(.mid) .two .body p.is-hot{transform:translateY(-4px)}}
+/* FAQ items and contact rows sit inside a white sheet already: only the words lift, no box (Josh, 23 Nov 2026) */
+.faq-group details::before,.reach>div::before{display:none}
+@media (prefers-reduced-motion:no-preference){@media (hover:hover){.faq-group details:hover summary{transform:translateY(-3px)}}.faq-group details.is-hot summary{transform:translateY(-3px)}}
 
 /* scroll reveal, used sparingly */
 .js [data-in]{opacity:0;transform:translateY(22px);transition:opacity .6s,transform .6s cubic-bezier(.2,.8,.2,1)}.js [data-in].is-in{opacity:1;transform:none}
