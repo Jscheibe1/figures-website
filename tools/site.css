@@ -350,3 +350,6 @@ a.svc-row:hover .go,a.svc-row.is-hot .go{background:var(--blue);color:#fff;box-s
 .js [data-in]{opacity:0;transform:translateY(22px);transition:opacity .6s,transform .6s cubic-bezier(.2,.8,.2,1)}.js [data-in].is-in{opacity:1;transform:none}
 
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}.js .unfold polygon{opacity:1}.js .unfold .p5{opacity:.85}.js .unfold .p7{opacity:.28}.js .unfold .p8{opacity:.9}.js .hero-copy>*{opacity:1;transform:none}.js [data-in]{opacity:1;transform:none}.js [data-stamp] .stamp{opacity:1;transform:none}.ticker-track{animation:none}.steps{--p:1!important}}
+
+/* links inside FAQ answers stay quiet: text color, thin blue underline */
+.faq-group p a{color:inherit;font-weight:inherit;text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:3px;text-decoration-color:var(--blue)}.faq-group p a:hover{color:var(--blue-d)}
