@@ -9,7 +9,7 @@ FORM_APPLY='https://formspree.io/f/meagpdkz'   # Formspree 'applications', added
 FORM_CONTACT='https://formspree.io/f/xoedpbwn'   # Formspree 'contact', added 23 Nov 2026
 EMAIL='info@wearefigures.com'; PHONE='(310) 279-0405'; TEL='+13102790405'
 IG='https://www.instagram.com/we.are.figures/'; IGH='@we.are.figures'   # Instagram, confirmed by Josh 23 Nov 2026
-V='20261124i'
+V='20261124j'
 INDEXNOW='4532206c322440ee6a6be0a731770bee'   # IndexNow key; the file /<key>.txt is written at the site root
 PREVIEW=MODE=='preview'
 def U(slug):
@@ -326,7 +326,7 @@ P.append(dict(slug='apply',title='Apply | Work With Figures',desc='Apply to work
 <fieldset class="fstep"><legend>Your pages and what you sell</legend>
 <div class="field"><label for="a-link">Your main page</label><input id="a-link" name="main_profile" type="text" placeholder="instagram.com/you or tiktok.com/@you" autocapitalize="off" required></div>
 <div class="field"><label for="a-other">Any other pages <small>(optional)</small></label><input id="a-other" name="other_profiles" type="text" placeholder="YouTube, a second account, your website" autocapitalize="off"></div>
-<div class="field"><span class="lab">What do you sell?</span><div class="chips g2">{chip('sells','My own products','radio',' required')}{chip('sells','Affiliate offers')}{chip('sells','Subscriptions')}{chip('sells','Services')}{chip('sells','Nothing yet')}</div><p class="hint">That\'s fine to say. Ads only make sense once there\'s something to sell, but branding, content and a plan can start earlier. Keep going and tell us what you\'re planning in the last step.</p></div>
+<div class="field"><span class="lab">What do you sell? <small>(pick any)</small></span><div class="chips g2" data-min="1" data-msg="Pick at least one thing you sell, or choose Nothing yet.">{chip('sells','My own products','checkbox')}{chip('sells','Affiliate offers','checkbox')}{chip('sells','Subscriptions','checkbox')}{chip('sells','Services','checkbox')}{chip('sells','Nothing yet','checkbox')}</div><p class="hint">That\'s fine to say. Ads only make sense once there\'s something to sell, but branding, content and a plan can start earlier. Keep going and tell us what you\'re planning in the last step.</p></div>
 <div class="field"><label for="a-store">Where do people buy it? <small>(a link, optional)</small></label><input id="a-store" name="store_link" type="text" placeholder="yourstore.com" autocapitalize="off"></div></fieldset>
 <fieldset class="fstep"><legend>What you need</legend>
 <div class="field"><span class="lab">Which services are you after? <small>(pick any)</small></span><div class="chips g2" data-min="1" data-msg="Pick at least one service, or choose Not sure yet.">{chip('services','Paid ads','checkbox')}{chip('services','Creative direction','checkbox')}{chip('services','Branding','checkbox')}{chip('services','Website','checkbox')}{chip('services','Content','checkbox')}{chip('services','Social management','checkbox')}{chip('services','Strategy and reporting','checkbox')}{chip('services','Not sure yet','checkbox')}</div></div>

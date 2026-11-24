@@ -75,7 +75,10 @@ $$('form[data-form]').forEach(function(form){var stepsEl=$$('.fstep',form),i=0,b
   $('.next',form).addEventListener('click',function(){if(valid(i)){show(i+1);var f=$('input,select,textarea',stepsEl[i]);form.scrollIntoView({block:'nearest'})}});
   $('.back',form).addEventListener('click',function(){show(i-1)})}
  var sells=$$('input[name=sells]',form),hint=$('.hint',form);
- sells.forEach(function(r){r.addEventListener('change',function(){hint.classList.toggle('is-on',r.value==='Nothing yet'&&r.checked)})});
+ /* pick any, except that "Nothing yet" stands alone */
+ sells.forEach(function(r){r.addEventListener('change',function(){var none=sells.filter(function(x){return x.value==='Nothing yet'})[0];
+  if(r.checked){if(r===none)sells.forEach(function(x){if(x!==none)x.checked=false});else if(none)none.checked=false}
+  if(hint)hint.classList.toggle('is-on',!!(none&&none.checked))})});
  form.addEventListener('submit',function(e){e.preventDefault();
   for(var n=0;n<stepsEl.length;n++){if(!valid(n)){show(n);return}}
   if(!form.checkValidity()){form.reportValidity();return}
