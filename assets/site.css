@@ -386,6 +386,10 @@ a.svc-row:hover .go,a.svc-row.is-hot .go{background:var(--blue);color:#fff;box-s
 .list>div:first-child.is-hot{transform:translateY(-4px);box-shadow:inset 0 1px 0 rgba(255,255,255,.22),0 24px 44px -16px rgba(46,107,255,.65)}
 .list>div.is-hot::before,a.svc-row.is-hot::before{width:72px}
 }
+/* home service rows: no lift. The row you are on answers quietly: its arrow fills, its tab grows and its text darkens */
+.row p{transition:color .3s}
+@media (hover:hover){.ledger a.row:hover p{color:var(--mid)}}.ledger a.row.is-hot p{color:var(--mid)}
+@media (hover:none) and (prefers-reduced-motion:no-preference){.row{transition:border-color .8s ease}.row p{transition:color .8s ease}.row .go{transition:background .8s ease,color .8s ease,transform .9s cubic-bezier(.22,.7,.28,1)}.row::after{transition:width .9s cubic-bezier(.22,.7,.28,1),background .6s}a.row.is-hot::after{width:88px}}
 
 /* scroll reveal, used sparingly */
 .js [data-in]{opacity:0;transform:translateY(22px);transition:opacity .6s,transform .6s cubic-bezier(.2,.8,.2,1)}.js [data-in].is-in{opacity:1;transform:none}
