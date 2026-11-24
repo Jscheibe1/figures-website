@@ -9,7 +9,7 @@ FORM_APPLY='https://formspree.io/f/meagpdkz'   # Formspree 'applications', added
 FORM_CONTACT='https://formspree.io/f/xoedpbwn'   # Formspree 'contact', added 23 Nov 2026
 EMAIL='info@wearefigures.com'; PHONE='(310) 279-0405'; TEL='+13102790405'
 IG='https://www.instagram.com/we.are.figures/'; IGH='@we.are.figures'   # Instagram, confirmed by Josh 23 Nov 2026
-V='20261124a'
+V='20261124b'
 INDEXNOW='4532206c322440ee6a6be0a731770bee'   # IndexNow key; the file /<key>.txt is written at the site root
 PREVIEW=MODE=='preview'
 def U(slug):
