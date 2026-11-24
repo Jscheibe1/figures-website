@@ -1,0 +1,4 @@
+__pycache__/
+.DS_Store
+# Internal working notes stay out of the repo while it is public.
+CLAUDE.md
