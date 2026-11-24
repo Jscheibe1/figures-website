@@ -406,3 +406,6 @@ a.svc-row:hover .go,a.svc-row.is-hot .go{background:var(--blue);color:#fff;box-s
 
 /* links inside FAQ answers stay quiet: text color, thin blue underline */
 .faq-group p a{color:inherit;font-weight:inherit;text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:3px;text-decoration-color:var(--blue)}.faq-group p a:hover{color:var(--blue-d)}
+
+.panel.proof h2{font-size:clamp(1.7rem,3.6vw,2.7rem);line-height:1.04}
+.panel.proof h2 em{font-style:normal;color:var(--yellow,#FFE14A);white-space:nowrap}

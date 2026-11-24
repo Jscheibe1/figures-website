@@ -11,7 +11,7 @@ d.addEventListener('keydown',function(e){if(e.key==='Escape'&&root.classList.con
 $$('a',menu).forEach(function(a){a.addEventListener('click',function(){setMenu(false)})})}
 
 /* scroll-linked: header, spinning seals, hero drift, step progress */
-var spins=$$('.spin'),drift=$('[data-drift]'),steps=$$('.steps'),ticking=false;
+var spins=$$('.spin'),drift=$('[data-drift]'),steps=$$('.steps'),ticking=false,touchLift=!reduce&&matchMedia('(hover: none)').matches&&window.innerHeight<=(screen.height||9999)*1.2;
 function frame(){ticking=false;var y=window.scrollY||0,vh=window.innerHeight;
  if(head)head.classList.toggle('is-solid',y>12||head.hasAttribute('data-solid'));
  if(!reduce){spins.forEach(function(el){var r=el.parentNode.getBoundingClientRect(),p;
@@ -19,7 +19,14 @@ function frame(){ticking=false;var y=window.scrollY||0,vh=window.innerHeight;
    if(el.getAttribute('data-spin')==='exit'){p=Math.max(0,Math.min(1,y/(vh*0.85)));el.style.transform='rotate('+(-8+360*p).toFixed(1)+'deg)'}
    else{p=Math.max(0,Math.min(1,(vh-r.top)/(vh*0.6)));p=1-Math.pow(1-p,2);el.style.transform='rotate('+(-8-360*(1-p)).toFixed(1)+'deg)'}});
   if(drift&&y<vh*1.2)drift.style.transform='translate3d(0,'+(y*0.12).toFixed(1)+'px,0)';
-  steps.forEach(function(s){var r=s.getBoundingClientRect();var p=(vh*0.8-r.top)/(r.height+vh*0.3);s.style.setProperty('--p',Math.max(0,Math.min(1,p)).toFixed(3))})}
+  /* the line fills to a reading line just below the middle of the screen; on touch the step the line is inside is the one that lifts */
+  steps.forEach(function(s){var r=s.getBoundingClientRect(),k=s.children,n=k.length,p,hot=null,i,L=vh*0.56;
+   if(r.bottom<-vh||r.top>vh*2)return;
+   if(n>1&&k[1].getBoundingClientRect().top>k[0].getBoundingClientRect().bottom-4){p=(L-r.top)/r.height;
+    if(p>0&&r.bottom>vh*0.36){hot=k[n-1];for(i=0;i<n-1;i++){if(L<(k[i].getBoundingClientRect().bottom+k[i+1].getBoundingClientRect().top)/2){hot=k[i];break}}}}
+   else{p=(vh*0.8-r.top)/(r.height+vh*0.3);if(p>0&&r.bottom>vh*0.3)hot=k[Math.min(n-1,Math.floor(p*n))]}
+   s.style.setProperty('--p',Math.max(0,Math.min(1,p)).toFixed(3));
+   if(touchLift&&hot!==s._hot){if(s._hot)s._hot.classList.remove('is-hot');if(hot)hot.classList.add('is-hot');s._hot=hot}})}
 }
 function onScroll(){if(!ticking){ticking=true;requestAnimationFrame(frame)}}
 addEventListener('scroll',onScroll,{passive:true});addEventListener('resize',onScroll);frame();
@@ -30,10 +37,10 @@ if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es
  /* touch: light the row crossing the middle of the screen */
  /* touch: the one block on the reading line (a little above the middle of the screen) lifts, the way hover does with a mouse */
  if(!reduce&&matchMedia('(hover: none)').matches&&window.innerHeight<=(screen.height||9999)*1.2){
-  var hotEls=$$('a.row,.list>div,a.svc-row,.facts>div,.step,.faq-group details,.fit-item,.two .body p,.panel p:not(:last-child)'),hotCur=null,hotTick=false;
+  var hotEls=$$('a.row,.list>div,a.svc-row,.facts>div,.faq-group details,.fit-item,.two .body p,.panel p:not(:last-child)'),hotCur=null,hotTick=false;
   var pickHot=function(){hotTick=false;var vh=window.innerHeight,y=vh*0.46,best=null,bd=1e9;
    for(var i=0;i<hotEls.length;i++){var r=hotEls[i].getBoundingClientRect();if(!r.width||r.bottom<0||r.top>vh)continue;var d=y<r.top?r.top-y:(y>r.bottom?y-r.bottom:0);if(d<bd){bd=d;best=hotEls[i]}}
-   if(bd>vh*0.14)best=null;
+   if(bd>vh*0.14||document.querySelector('.step.is-hot'))best=null;
    if(best!==hotCur){if(hotCur)hotCur.classList.remove('is-hot');if(best)best.classList.add('is-hot');hotCur=best}};
   if(hotEls.length){addEventListener('scroll',function(){if(!hotTick){hotTick=true;requestAnimationFrame(pickHot)}},{passive:true});addEventListener('resize',pickHot);pickHot()}
  }
