@@ -30,7 +30,7 @@ if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es
  /* touch: light the row crossing the middle of the screen */
  /* touch: the one block on the reading line (a little above the middle of the screen) lifts, the way hover does with a mouse */
  if(!reduce&&matchMedia('(hover: none)').matches&&window.innerHeight<=(screen.height||9999)*1.2){
-  var hotEls=$$('a.row,.list>div,a.svc-row,.facts>div,.step,.deal,.faq-group details,.reach>div,.fit-item,.two .body p,.panel p:not(:last-child)'),hotCur=null,hotTick=false;
+  var hotEls=$$('.list>div,a.svc-row,.facts>div,.step,.faq-group details,.reach>div,.fit-item,.two .body p,.panel p:not(:last-child)'),hotCur=null,hotTick=false;
   var pickHot=function(){hotTick=false;var vh=window.innerHeight,y=vh*0.46,best=null,bd=1e9;
    for(var i=0;i<hotEls.length;i++){var r=hotEls[i].getBoundingClientRect();if(!r.width||r.bottom<0||r.top>vh)continue;var d=y<r.top?r.top-y:(y>r.bottom?y-r.bottom:0);if(d<bd){bd=d;best=hotEls[i]}}
    if(bd>vh*0.14)best=null;
