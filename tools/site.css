@@ -390,9 +390,9 @@ a.svc-row:hover .go,a.svc-row.is-hot .go{background:var(--blue);color:#fff;box-s
 .row p{transition:color .3s}
 @media (hover:hover){.ledger a.row:hover p{color:var(--mid)}}.ledger a.row.is-hot p{color:var(--mid)}
 @media (hover:none) and (prefers-reduced-motion:no-preference){.row{transition:border-color .8s ease}.row p{transition:color .8s ease}.row .go{transition:background .8s ease,color .8s ease,transform .9s cubic-bezier(.22,.7,.28,1)}.row::after{transition:width .9s cubic-bezier(.22,.7,.28,1),background .6s}a.row.is-hot::after{width:88px}}
-/* About, "What the name means": the words lift on their own, with no surface behind them (Josh, 23 Nov 2026) */
-.two.text-only .body p::before{display:none}
-@media (prefers-reduced-motion:no-preference){@media (hover:hover){.two.text-only .body p:hover{transform:translateY(-4px)}}.two.text-only .body p.is-hot{transform:translateY(-4px)}}
+/* paragraphs on light sections: the words lift on their own, with no surface behind them (Josh, 23 Nov 2026). Dark sections keep their soft light */
+.band:not(.mid) .two .body p::before{display:none}
+@media (prefers-reduced-motion:no-preference){@media (hover:hover){.band:not(.mid) .two .body p:hover{transform:translateY(-4px)}}.band:not(.mid) .two .body p.is-hot{transform:translateY(-4px)}}
 
 /* scroll reveal, used sparingly */
 .js [data-in]{opacity:0;transform:translateY(22px);transition:opacity .6s,transform .6s cubic-bezier(.2,.8,.2,1)}.js [data-in].is-in{opacity:1;transform:none}
