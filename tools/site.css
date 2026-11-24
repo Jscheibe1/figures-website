@@ -396,6 +396,8 @@ a.svc-row:hover .go,a.svc-row.is-hot .go{background:var(--blue);color:#fff;box-s
 /* FAQ items and contact rows sit inside a white sheet already: only the words lift, no box (Josh, 23 Nov 2026) */
 .faq-group details::before,.reach>div::before{display:none}
 @media (prefers-reduced-motion:no-preference){@media (hover:hover){.faq-group details:hover summary{transform:translateY(-3px)}}.faq-group details.is-hot summary{transform:translateY(-3px)}}
+/* contact rows (email, phone): no lift of any kind (Josh, 23 Nov 2026) */
+.reach>div:hover>*,.reach>div.is-hot>*{transform:none}
 
 /* scroll reveal, used sparingly */
 .js [data-in]{opacity:0;transform:translateY(22px);transition:opacity .6s,transform .6s cubic-bezier(.2,.8,.2,1)}.js [data-in].is-in{opacity:1;transform:none}
